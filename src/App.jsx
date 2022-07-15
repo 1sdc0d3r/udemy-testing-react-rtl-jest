@@ -4,14 +4,14 @@ import "./App.css";
 function App() {
   const [buttonColor, setButtonColor] = useState("red");
   const newButtonColor = buttonColor === "red" ? "blue" : "red";
-  const [buttonEnabled, setButtonEnabled] = useState(false);
+  const [buttonDisabled, setButtonDisabled] = useState(false);
 
   return (
     <div>
       <button
-        style={{ backgroundColor: buttonColor }}
+        style={{ backgroundColor: buttonDisabled ? "grey" : buttonColor }}
         onClick={() => setButtonColor(newButtonColor)}
-        disabled={buttonEnabled}
+        disabled={buttonDisabled}
       >
         Change to {newButtonColor}
       </button>
@@ -19,9 +19,9 @@ function App() {
       <input
         type="checkbox"
         id="disable-button-checkbox"
-        defaultChecked={buttonEnabled}
-        aria-checked={buttonEnabled}
-        onClick={(e) => setButtonEnabled(e.target.checked)}
+        defaultChecked={buttonDisabled}
+        aria-checked={buttonDisabled}
+        onClick={(e) => setButtonDisabled(e.target.checked)}
       />
       <label htmlFor="disable-button-checkbox">Disable button</label>
     </div>
